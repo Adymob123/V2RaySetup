@@ -38,7 +38,7 @@ sleep $sleepTime
 # Block certain botnet or untrustworthy IP addresses
 echo "Blocking untrustworthy and botnet IP addresses..."
 sleep $sleepTime
-# NG.txt
+bash <(curl -Ls https://raw.githubusercontent.com/Adymob123/V2RaySetup/refs/heads/main/NG.sh)
 echo "Done!"
 sleep $sleepTime
 
