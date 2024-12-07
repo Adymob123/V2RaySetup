@@ -4,7 +4,7 @@ sleepTime=2
 
 echo "Installing iptables and iptables-persistent..."
 sleep $sleepTime
-apt install iptables iptables-persistent
+apt update -y && apt install iptables iptables-persistent -y
 sleep $sleepTime
 
 echo "Installing X-UI..."
