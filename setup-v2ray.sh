@@ -2,6 +2,11 @@
 
 sleepTime=2
 
+echo "Installing iptables and iptables-persistent..."
+sleep $sleepTime
+apt install iptables iptables-persistent
+sleep $sleepTime
+
 echo "Installing X-UI..."
 sleep $sleepTime
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
@@ -51,6 +56,5 @@ sleep $sleepTime
 
 echo "Saving firewall rules..."
 sleep $sleepTime
-apt install iptables-persistent
 netfilter-persistent save
 echo "Done!"
