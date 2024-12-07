@@ -7,12 +7,6 @@ sleep $sleepTime
 apt update -y && apt install iptables iptables-persistent -y
 sleep $sleepTime
 
-echo "Installing X-UI..."
-sleep $sleepTime
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
-echo "Done!"
-sleep $sleepTime
-
 echo "Blocking invalid IP addresses for routing..."
 sleep $sleepTime
 # Block certain invalid IP addresses for outward routing
@@ -58,3 +52,9 @@ echo "Saving firewall rules..."
 sleep $sleepTime
 netfilter-persistent save
 echo "Done!"
+
+echo "Installing X-UI..."
+sleep $sleepTime
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+echo "Done!"
+sleep $sleepTime
