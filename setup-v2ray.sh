@@ -50,11 +50,11 @@ sleep $sleepTime
 
 echo "Loading abuse IPs loaded into ipset and blocking via iptables/ip6tables"
 sleep $sleepTime
-sudo bash <(curl -Ls https://raw.githubusercontent.com/Adymob123/V2RaySetup/refs/heads/main/block-abuse-ips.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/Adymob123/V2RaySetup/refs/heads/main/block-abuse-ips.sh)
 echo "Done!"
 sleep $sleepTime
 
-CRON_CMD="sudo bash <(curl -Ls https://raw.githubusercontent.com/Adymob123/V2RaySetup/refs/heads/main/block-abuse-ips.sh) >/dev/null 2>&1"
+CRON_CMD="bash <(curl -Ls https://raw.githubusercontent.com/Adymob123/V2RaySetup/refs/heads/main/block-abuse-ips.sh) >/dev/null 2>&1"
 CRON_JOB="0 3 * * * $CRON_CMD"
 
 # Check if job already exists
