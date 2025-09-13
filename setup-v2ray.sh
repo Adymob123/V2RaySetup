@@ -4,7 +4,7 @@ sleepTime=2
 
 echo "Installing iptables and iptables-persistent..."
 sleep $sleepTime
-apt update -y && apt install iptables iptables-persistent ipset -y
+apt update -y && apt install iptables -y
 sleep $sleepTime
 
 echo "Blocking invalid IP addresses for routing..."
@@ -62,11 +62,6 @@ CRON_JOB="0 3 * * * $CRON_CMD"
   ( crontab -l 2>/dev/null; echo "$CRON_JOB" ) | crontab -
   echo "✅ Installed daily cron job (03:00 UTC) to refresh abuse IPs"
 }
-
-echo "Saving firewall rules..."
-sleep $sleepTime
-netfilter-persistent save
-echo "Done!"
 
 echo "Installing X-UI..."
 sleep $sleepTime
