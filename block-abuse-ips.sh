@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive apt-get install -y iptables-persistent ipset
+NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive apt-get install -y ipset iptables-persistent ipset-persistent
 
 # Lists to fetch
 LISTS=(
@@ -77,6 +77,22 @@ iptables -C OUTPUT -m set --match-set "$IPV4_SET" dst -j DROP 2>/dev/null \
 ip6tables -C OUTPUT -m set --match-set "$IPV6_SET" dst -j DROP 2>/dev/null \
   || ip6tables -A OUTPUT -m set --match-set "$IPV6_SET" dst -j DROP
 
-echo "Saving firewall rules..."
+echo "Saving iptables rules..."
 netfilter-persistent save
+echo "Saving ipset entries..."
+ipset save > /etc/iptables/ipset.rules
+echo "Creating service to load ipset entries..."
+echo "[Unit]
+Description=Restore ipset rules
+Before=netfilter-persistent.service
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ipset restore -file /etc/iptables/ipset.rules
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/ipset-persistent.service
+
+systemctl daemon-reexec && systemctl enable ipset-persistent
 echo "Done!"
