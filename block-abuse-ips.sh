@@ -78,6 +78,5 @@ ip6tables -C OUTPUT -m set --match-set "$IPV6_SET" dst -j DROP 2>/dev/null \
   || ip6tables -A OUTPUT -m set --match-set "$IPV6_SET" dst -j DROP
 
 echo "Saving firewall rules..."
-sleep $sleepTime
 netfilter-persistent save
 echo "Done!"
