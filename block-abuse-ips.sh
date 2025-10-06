@@ -10,7 +10,7 @@ NEEDRESTART_MODE=a DEBIAN_FRONTEND=noninteractive apt-get install -y ipset iptab
 # Lists to fetch
 LISTS=(
   "https://www.spamhaus.org/drop/drop.txt"
-  "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_level1.netset"
+ # "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_level1.netset"
 )
 
 # Set names
