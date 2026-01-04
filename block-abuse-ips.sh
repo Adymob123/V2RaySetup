@@ -107,6 +107,31 @@ iptables -A OUTPUT -d 46.165.199.0/24 -j DROP
 iptables -A OUTPUT -d 178.162.202.0/24 -j DROP
 iptables -A OUTPUT -d 85.17.70.0/24 -j DROP
 
+iptables -A INPUT -s 178.162.203.0/24 -j DROP
+iptables -A INPUT -s 45.159.79.0/24 -j DROP
+iptables -A INPUT -s 85.17.155.0/24 -j DROP
+iptables -A INPUT -s 185.221.222.0/24 -j DROP
+iptables -A INPUT -s 89.150.57.0/24 -j DROP
+iptables -A INPUT -s 46.165.199.0/24 -j DROP
+iptables -A INPUT -s 178.162.202.0/24 -j DROP
+iptables -A INPUT -s 85.17.70.0/24 -j DROP
+iptables -A OUTPUT -d 178.162.203.0/24 -j DROP
+iptables -A OUTPUT -d 45.159.79.0/24 -j DROP
+iptables -A OUTPUT -d 85.17.155.0/24 -j DROP
+iptables -A OUTPUT -d 185.221.222.0/24 -j DROP
+iptables -A OUTPUT -d 89.150.57.0/24 -j DROP
+iptables -A OUTPUT -d 46.165.199.0/24 -j DROP
+iptables -A OUTPUT -d 178.162.202.0/24 -j DROP
+iptables -A OUTPUT -d 85.17.70.0/24 -j DROP
+iptables -A OUTPUT -p tcp --dport 25 -j DROP
+iptables -A OUTPUT -p tcp --dport 465 -j DROP
+iptables -A OUTPUT -p tcp --dport 587 -j DROP
+iptables -A OUTPUT -p tcp --dport 2525 -j DROP
+iptables -A INPUT -p tcp --dport 25 -j DROP
+iptables -A INPUT -p tcp --dport 465 -j DROP
+iptables -A INPUT -p tcp --dport 587 -j DROP
+iptables -A INPUT -p tcp --dport 2525 -j DROP
+
 echo "Saving iptables rules..."
 netfilter-persistent save
 echo "Saving ipset entries..."
